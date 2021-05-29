@@ -12,8 +12,12 @@ class KmeansCore:
         if cancel:
             return
 
-        self.parent.showdata("Klikaj LPM aby dodać punkt w miejscu przebywania myszki\n"
-                             "Kliknij PPM aby zakończyć", important=False)
+        answer = self.parent.askquestion(inputname="Tworzenie zbioru danych", message="Kliknij OK, aby rozpocząć\n"
+                                         "Klikaj LPM w dowolnym miejscu aby dodać punkt w miejscu przebywania myszki\n"
+                                         "Kliknij PPM aby zakończyć\n")
+
+        if not answer:
+            return
         lista = create_mouse_click_list()
         writefile(data=lista, filepath=path, delimiter=",")
 
